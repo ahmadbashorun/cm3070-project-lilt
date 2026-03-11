@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { EmailFolder } from "@/components/EmailInterface/EmailSidebar";
+import { EmailFolder } from "@/types";
 import { TaskView } from "@/components/TaskManager/TaskSidebar";
 
 interface UseDashboardLayoutOptions {

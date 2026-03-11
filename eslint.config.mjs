@@ -32,9 +32,8 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.strictTypeChecked,
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended"

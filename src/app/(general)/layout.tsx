@@ -47,11 +47,13 @@ function isValidTaskView(value: string | null): value is TaskView {
   return VALID_TASK_VIEWS.includes(value as TaskView);
 }
 
-export default function GeneralLayout({
+import { Suspense } from "react";
+
+function GeneralLayoutInner({
   children,
 }: {
   children: React.ReactNode;
-}): React.ReactElement {
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const currentLevel = useStressStore((state) => state.currentLevel);
@@ -192,4 +194,12 @@ export default function GeneralLayout({
 function DashboardLayoutWrapper({ children }: { children: React.ReactNode }) {
   const layoutProps = useDashboardLayoutContext();
   return <DashboardLayout {...layoutProps}>{children}</DashboardLayout>;
+}
+
+export default function GeneralLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={null}>
+      <GeneralLayoutInner>{children}</GeneralLayoutInner>
+    </Suspense>
+  );
 }
