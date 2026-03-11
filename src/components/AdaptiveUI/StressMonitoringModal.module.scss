@@ -1,0 +1,195 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: map.get($z-index, modal);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.75rem;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: map.get($spacing-scale, 3);
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.title {
+  margin: 0;
+  font-size: map.get(map.get($typography, heading), h5, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: map.get(map.get($color-palette, neutral), 500);
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: map.get($spacing-scale, 4);
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 4);
+}
+
+.chartWrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.5rem;
+  padding: map.get($spacing-scale, 3);
+}
+
+.currentMetrics {
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-radius: 0.5rem;
+  padding: map.get($spacing-scale, 4);
+}
+
+.metricsTitle {
+  margin: 0 0 map.get($spacing-scale, 3) 0;
+  font-size: map.get(map.get($typography, heading), h6, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+}
+
+.calibrationWarning {
+  padding: map.get($spacing-scale, 2);
+  margin-bottom: map.get($spacing-scale, 3);
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: map.get($spacing-scale, 3);
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 1);
+  padding: map.get($spacing-scale, 2);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.375rem;
+}
+
+.metricLabel {
+  font-size: 0.75rem;
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}
+
+.metricValue {
+  font-size: 1.25rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+}
+
+.warningBadge {
+  display: inline-block;
+  margin-left: 0.25rem;
+  font-size: 0.75rem;
+  color: #f59e0b;
+}
+
+.warningText {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: map.get(map.get($typography, font-weight), normal);
+  color: map.get(map.get($color-palette, neutral), 500);
+  margin-top: 0.25rem;
+}
+
+.level2,
+.level3 {
+  max-width: 800px;
+
+  .content {
+    padding: map.get($spacing-scale, 3);
+  }
+
+  .chartWrapper {
+    padding: map.get($spacing-scale, 2);
+  }
+}
+
+.level4 {
+  max-width: 700px;
+
+  .content {
+    padding: map.get($spacing-scale, 3);
+  }
+
+  .chartWrapper {
+    padding: map.get($spacing-scale, 2);
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

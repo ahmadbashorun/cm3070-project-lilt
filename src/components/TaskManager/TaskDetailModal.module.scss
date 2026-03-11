@@ -1,0 +1,188 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: map.get($z-index, modal);
+  padding: map.get($spacing-scale, 6);
+}
+
+.modal {
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: map.get($spacing-scale, 6);
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.title {
+  font-size: map.get(map.get($typography, heading), h4, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0;
+  flex: 1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: map.get(map.get($color-palette, neutral), 500);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  @include transition(background, color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    color: map.get(map.get($color-palette, neutral), 900);
+  }
+}
+
+.content {
+  padding: map.get($spacing-scale, 6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map.get($spacing-scale, 6);
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 1);
+}
+
+.metaLabel {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metaValue {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}
+
+.priority {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 2);
+  border-radius: 4px;
+  display: inline-block;
+
+  &.p0 {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  &.p1 {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  &.p2 {
+    background: map.get(map.get($color-palette, primary), 100);
+    color: map.get(map.get($color-palette, primary), 800);
+  }
+
+  &.p3 {
+    background: map.get(map.get($color-palette, neutral), 100);
+    color: map.get(map.get($color-palette, neutral), 600);
+  }
+}
+
+.description {
+  margin-top: map.get($spacing-scale, 6);
+  padding-top: map.get($spacing-scale, 6);
+  border-top: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.sectionTitle {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 700);
+  margin: 0 0 map.get($spacing-scale, 3) 0;
+}
+
+.description p {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  line-height: 1.6;
+  color: map.get(map.get($color-palette, neutral), 500);
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: map.get($spacing-scale, 3);
+  padding: map.get($spacing-scale, 4) map.get($spacing-scale, 6);
+  border-top: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.editButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 5);
+  background: map.get(map.get($color-palette, primary), 500);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  cursor: pointer;
+  @include transition(background);
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+  }
+}
+
+.closeButtonFooter {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 5);
+  background: map.get(map.get($color-palette, neutral), 50);
+  color: map.get(map.get($color-palette, neutral), 700);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+}

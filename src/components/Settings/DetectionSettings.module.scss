@@ -1,0 +1,390 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0;
+}
+
+.description {
+  color: map.get(map.get($color-palette, neutral), 500);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sectionTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: map.get(map.get($color-palette, neutral), 50);
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  border-radius: 0.5rem;
+}
+
+.optionContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.optionLabel {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: map.get(map.get($color-palette, neutral), 900);
+  cursor: pointer;
+}
+
+.optionDescription {
+  font-size: 0.7rem;
+  color: map.get(map.get($color-palette, neutral), 500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: map.get(map.get($color-palette, neutral), 300);
+  border-radius: 24px;
+  transition: background 0.3s;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: map.get(map.get($color-palette, neutral), 50);
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+}
+
+.toggle input:checked + .toggleSlider {
+  background: map.get(map.get($color-palette, primary), 500);
+}
+
+.toggle input:checked + .toggleSlider:before {
+  transform: translateX(20px);
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: map.get(map.get($color-palette, neutral), 300);
+  outline: none;
+  appearance: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: map.get(map.get($color-palette, primary), 500);
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: map.get(map.get($color-palette, primary), 500);
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: map.get(map.get($color-palette, neutral), 500);
+}
+
+.sliderDescription {
+  font-size: 0.7rem;
+  color: map.get(map.get($color-palette, neutral), 500);
+  margin: 0;
+}
+
+.manualSectionDescription {
+  margin-top: 0.25rem;
+}
+
+.manualControlsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 0.75rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.levelSelectWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.levelSelect {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  background: map.get(map.get($color-palette, neutral), 50);
+  font-size: 0.8rem;
+  color: map.get(map.get($color-palette, neutral), 900);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+
+  &:focus-visible {
+    border-color: map.get(map.get($color-palette, primary), 500);
+    box-shadow: 0 0 0 1px
+      color-mix(
+        in srgb,
+        map.get(map.get($color-palette, primary), 500) 40%,
+        transparent
+      );
+    background: map.get(map.get($color-palette, neutral), 0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.scenarioButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.scenarioButton {
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 3);
+  border-radius: 999px;
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  background: map.get(map.get($color-palette, neutral), 0);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, transform 0.1s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 50);
+    border-color: map.get(map.get($color-palette, primary), 400);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    background: map.get(map.get($color-palette, neutral), 100);
+  }
+}
+
+.scenarioButtonActive {
+  border-color: map.get(map.get($color-palette, primary), 500);
+  background: map.get(map.get($color-palette, primary), 50);
+  color: map.get(map.get($color-palette, primary), 700);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid map.get(map.get($color-palette, neutral), 300);
+}
+
+.saveButton,
+.resetButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 4);
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saveButton {
+  background: map.get(map.get($color-palette, primary), 500);
+  color: white;
+  border: none;
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+    transform: translateY(-1px);
+  }
+}
+
+.resetButton {
+  background: map.get(map.get($color-palette, neutral), 50);
+  color: map.get(map.get($color-palette, neutral), 900);
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+  }
+}
+
+.permissionStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: map.get(map.get($color-palette, stress), s1);
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+}
+
+.permissionIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.7rem;
+
+  &.granted {
+    background: map.get(map.get($color-palette, stress), s0);
+    color: map.get(map.get($color-palette, neutral), 50);
+  }
+
+  &.denied {
+    background: map.get(map.get($color-palette, stress), s3);
+    color: map.get(map.get($color-palette, neutral), 50);
+  }
+
+  &.prompt {
+    background: map.get(map.get($color-palette, stress), s1);
+    color: map.get(map.get($color-palette, neutral), 50);
+  }
+
+  &.unavailable {
+    background: map.get(map.get($color-palette, neutral), 300);
+    color: map.get(map.get($color-palette, neutral), 50);
+  }
+}
+
+.permissionMessage {
+  flex: 1;
+  color: map.get(map.get($color-palette, neutral), 900);
+  line-height: 1.4;
+}
+
+.permissionButton {
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 2);
+  background: map.get(map.get($color-palette, primary), 500);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+  }
+
+  &:active {
+    background: map.get(map.get($color-palette, primary), 700);
+  }
+}
+
+.errorMessage {
+  padding: map.get($spacing-scale, 3);
+  background: map.get(map.get($color-palette, stress), s3);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.toggle input:disabled + .toggleSlider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle input:disabled {
+  cursor: not-allowed;
+}
+
+.saveButton:disabled,
+.resetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}

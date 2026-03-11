@@ -1,0 +1,303 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  display: flex;
+  height: 100%;
+  background: #ffffff;
+  padding: map.get($spacing-scale, 8) map.get($spacing-scale, 8);
+}
+
+.content {
+  width: 100%;
+  max-width: 70%;
+  padding: map.get($spacing-scale, 8);
+  overflow-y: auto;
+  background: map.get(map.get($color-palette, neutral), 50);
+}
+
+.backBar {
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.backButton {
+  padding: 0.5rem 1rem;
+  background: map.get(map.get($color-palette, stress), s0);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: map.get($spacing-scale, 1);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 500);
+  }
+
+  &:focus-visible {
+    outline: 2px solid map.get(map.get($color-palette, stress), s0);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.header {
+  margin-bottom: map.get($spacing-scale, 8);
+}
+
+.title {
+  font-size: map.get(map.get($typography, heading), h4, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0 0 map.get($spacing-scale, 6) 0;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 2);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 1);
+}
+
+.metaLabel {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), regular);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  width: 70px;
+  max-width: 70px;
+}
+
+.metaValue {
+  font-size: map.get(map.get($typography, paragraph), medium-emphasized, size);
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-weight: map.get(map.get($typography, font-weight), regular);
+}
+
+.priority {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 2);
+  border-radius: 4px;
+  display: inline-block;
+
+  &.p0 {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  &.p1 {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  &.p2 {
+    background: map.get(map.get($color-palette, primary), 100);
+    color: map.get(map.get($color-palette, primary), 800);
+  }
+
+  &.p3 {
+    background: map.get(map.get($color-palette, neutral), 100);
+    color: map.get(map.get($color-palette, neutral), 600);
+  }
+}
+
+.description {
+  margin-top: map.get($spacing-scale, 6);
+  padding: map.get($spacing-scale, 4);
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-radius: 8px;
+
+  p {
+    margin: 0;
+    font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+    line-height: 1.6;
+    color: map.get(map.get($color-palette, neutral), 700);
+  }
+}
+
+.activity {
+  margin-top: map.get($spacing-scale, 8);
+  padding-top: map.get($spacing-scale, 8);
+  border-top: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.activityTitle {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.addButton {
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 3);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 700);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+}
+
+.activityItem {
+  display: flex;
+  gap: map.get($spacing-scale, 3);
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.activityAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: map.get(map.get($color-palette, neutral), 200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  flex-shrink: 0;
+}
+
+.activityContent {
+  flex: 1;
+}
+
+.activityText {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 700);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.activityAuthor {
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+}
+
+.activityTime {
+  color: map.get(map.get($color-palette, neutral), 400);
+}
+
+.commentInput {
+  display: flex;
+  gap: map.get($spacing-scale, 2);
+  margin-top: map.get($spacing-scale, 4);
+}
+
+.input {
+  flex: 1;
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-family: inherit;
+  @include focus-ring;
+
+  &:focus {
+    border-color: map.get(map.get($color-palette, primary), 500);
+  }
+}
+
+.sendButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 5);
+  background: map.get(map.get($color-palette, primary), 500);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  cursor: pointer;
+  @include transition(background);
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+  }
+}
+
+.emptyState {
+  padding: map.get($spacing-scale, 12);
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.emptyStateTitle {
+  font-size: map.get(map.get($typography, heading), h4, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0 0 map.get($spacing-scale, 4) 0;
+  line-height: 1.3;
+}
+
+.emptyStateBody {
+  margin: 0 0 map.get($spacing-scale, 8) 0;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  line-height: 1.6;
+  color: map.get(map.get($color-palette, neutral), 600);
+}
+
+.emptyStateActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map.get($spacing-scale, 3);
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyStateSecondaryButton {
+  padding: 0.5rem 1rem;
+  background: map.get(map.get($color-palette, neutral), 100);
+  color: map.get(map.get($color-palette, neutral), 700);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: map.get($spacing-scale, 1);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 200);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+
+  &:focus-visible {
+    outline: 2px solid map.get(map.get($color-palette, primary), 500);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

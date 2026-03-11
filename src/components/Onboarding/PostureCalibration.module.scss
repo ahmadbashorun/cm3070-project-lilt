@@ -1,0 +1,307 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: map.get(map.get($typography, heading), h4, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.instructionText {
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), regular);
+  margin-bottom: map.get($spacing-scale, 8);
+  line-height: 140%;
+  letter-spacing: -4%;
+  text-align: center;
+  max-width: 36rem;
+}
+
+.errorMessage {
+  color: map.get(map.get($color-palette, stress), s3);
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: map.get($spacing-scale, 4);
+  max-width: 36rem;
+}
+
+.placeholder {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.placeholderBox {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: map.get(map.get($color-palette, neutral), 200);
+  border-radius: 0.5rem;
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+}
+
+.videoContainer {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: map.get($spacing-scale, 6);
+  background-color: map.get(map.get($color-palette, neutral), 200);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.enableButton {
+  width: 100%;
+  max-width: 28rem;
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 4);
+  background-color: map.get(map.get($color-palette, primary), 600);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  border: none;
+  cursor: pointer;
+  @include transition(background-color);
+  @include focus-ring();
+
+  &:hover {
+    background-color: map.get(map.get($color-palette, primary), 700);
+  }
+}
+
+.alignText {
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 700);
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: map.get($spacing-scale, 4);
+  width: 100%;
+  max-width: 28rem;
+}
+
+.button {
+  width: 100%;
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 4);
+  border-radius: 0.5rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  background-color: map.get(map.get($color-palette, primary), 600);
+  color: white;
+  border: none;
+  cursor: pointer;
+  @include transition(background-color);
+  @include focus-ring();
+
+  &:hover {
+    background-color: map.get(map.get($color-palette, primary), 700);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: map.get(map.get($color-palette, primary), 400);
+
+    &:hover {
+      background-color: map.get(map.get($color-palette, primary), 400);
+    }
+  }
+}
+
+.skipLink {
+  background: none;
+  border: none;
+  color: map.get(map.get($color-palette, primary), 600);
+  font-size: 0.875rem;
+  cursor: pointer;
+  @include transition(color);
+  @include focus-ring();
+
+  &:hover {
+    color: map.get(map.get($color-palette, primary), 700);
+    text-decoration: underline;
+  }
+}
+
+.previewContainer {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: map.get($spacing-scale, 6);
+  background-color: map.get(map.get($color-palette, neutral), 200);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.previewImage {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+.baselineInfo {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: map.get($spacing-scale, 6);
+  padding: map.get($spacing-scale, 4);
+  background-color: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.5rem;
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.baselineItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: map.get($spacing-scale, 2) 0;
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.baselineLabel {
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}
+
+.baselineValue {
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+}
+
+.hintsContainer {
+  width: 100%;
+  max-width: 36rem;
+  margin-bottom: map.get($spacing-scale, 6);
+  padding: map.get($spacing-scale, 4);
+  background-color: map.get(map.get($color-palette, primary), 50);
+  border-radius: 0.5rem;
+  border: 1px solid map.get(map.get($color-palette, primary), 200);
+}
+
+.hintsList {
+  margin: map.get($spacing-scale, 2) 0 0 0;
+  padding-left: map.get($spacing-scale, 5);
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-size: 0.875rem;
+  line-height: 1.6;
+
+  li {
+    margin-bottom: map.get($spacing-scale, 2);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.hintText {
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: map.get($spacing-scale, 4);
+  line-height: 140%;
+  max-width: 36rem;
+
+  strong {
+    color: map.get(map.get($color-palette, neutral), 900);
+    font-weight: map.get(map.get($typography, font-weight), semibold);
+  }
+}
+
+.secondaryButton {
+  width: 100%;
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 4);
+  border-radius: 0.5rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  background-color: white;
+  color: map.get(map.get($color-palette, primary), 600);
+  border: 1px solid map.get(map.get($color-palette, primary), 600);
+  cursor: pointer;
+  @include transition(all);
+  @include focus-ring();
+
+  &:hover {
+    background-color: map.get(map.get($color-palette, primary), 50);
+    border-color: map.get(map.get($color-palette, primary), 700);
+    color: map.get(map.get($color-palette, primary), 700);
+  }
+}
+
+.progressContainer {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: map.get(map.get($color-palette, neutral), 200);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: map.get($spacing-scale, 2);
+}
+
+.progressFill {
+  height: 100%;
+  background-color: map.get(map.get($color-palette, primary), 600);
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-size: 0.875rem;
+}
+
+.loadingContainer {
+  width: 100%;
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: map.get($spacing-scale, 4);
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid map.get(map.get($color-palette, neutral), 200);
+  border-top-color: map.get(map.get($color-palette, primary), 600);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-size: 0.875rem;
+}

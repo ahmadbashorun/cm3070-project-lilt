@@ -1,0 +1,90 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  margin-top: map.get($spacing-scale, 8);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.title {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.addButton {
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 3);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 700);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+}
+
+.inputContainer {
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.input {
+  width: 100%;
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-family: inherit;
+  @include focus-ring;
+
+  &:focus {
+    border-color: map.get(map.get($color-palette, primary), 500);
+  }
+}
+
+.subtaskList {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 3);
+}
+
+.subtaskItem {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 3);
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: map.get(map.get($color-palette, primary), 500);
+}
+
+.subtaskTitle {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 700);
+  flex: 1;
+
+  &.completed {
+    text-decoration: line-through;
+    color: map.get(map.get($color-palette, neutral), 400);
+  }
+}

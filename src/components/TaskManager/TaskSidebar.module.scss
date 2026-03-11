@@ -1,0 +1,80 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.sidebar {
+  width: 240px;
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-right: 1px solid map.get(map.get($color-palette, neutral), 200);
+  padding: map.get($spacing-scale, 4);
+  overflow-y: auto;
+  height: 100%;
+}
+
+.section {
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.sectionTitle {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 map.get($spacing-scale, 3) 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 1);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 2);
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+  @include transition(background);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+  }
+
+  &.active {
+    background: map.get(map.get($color-palette, neutral), 200);
+    font-weight: map.get(map.get($typography, font-weight), semibold);
+
+    .navIcon {
+      color: map.get(map.get($color-palette, stress), s0);
+    }
+
+    .navLabel {
+      color: map.get(map.get($color-palette, neutral), 900);
+    }
+  }
+}
+
+.navIcon {
+  font-size: 18px;
+  color: map.get(map.get($color-palette, neutral), 500);
+  flex-shrink: 0;
+}
+
+.navLabel {
+  flex: 1;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 700);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}
+
+.count {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  color: map.get(map.get($color-palette, neutral), 500);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}

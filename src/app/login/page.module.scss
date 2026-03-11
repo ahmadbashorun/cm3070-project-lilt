@@ -1,0 +1,44 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: map.get(map.get($color-palette, neutral), 50);
+}
+
+.card {
+  width: 100%;
+  max-width: 28rem;
+  padding: map.get($spacing-scale, 8);
+}
+
+.logo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: map.get(map.get($typography, font-weight), bold);
+  color: map.get(map.get($color-palette, primary), 500);
+  margin-bottom: map.get($spacing-scale, 24);
+  line-height: 110%;
+  letter-spacing: -1.5px;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: map.get(map.get($color-palette, neutral), 700);
+  margin-bottom: map.get($spacing-scale, 4);
+  font-weight: map.get(map.get($typography, font-weight), light);
+  text-align: left;
+}
+
+.title {
+  font-size: 1.063rem;
+  font-weight: map.get(map.get($typography, font-weight), regular);
+  color: map.get(map.get($color-palette, neutral), 950);
+  margin-bottom: map.get($spacing-scale, 6);
+  text-align: left;
+  line-height: 140%;
+  letter-spacing: -4%;
+}

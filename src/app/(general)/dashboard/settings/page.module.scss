@@ -1,0 +1,119 @@
+@use "sass:map";
+@use "../../../../styles/variables" as *;
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0;
+}
+
+.backLink {
+  color: map.get(map.get($color-palette, primary), 500);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+
+  &:hover {
+    color: map.get(map.get($color-palette, primary), 600);
+    text-decoration: underline;
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav {
+  width: 240px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.navItem {
+  padding: 0.75rem 1rem;
+  background: map.get(map.get($color-palette, neutral), 100);
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  border-radius: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: map.get(map.get($color-palette, neutral), 900);
+  transition: all 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+
+  &.active {
+    background: map.get(map.get($color-palette, primary), 500);
+    color: map.get(map.get($color-palette, neutral), 50);
+    border-color: map.get(map.get($color-palette, primary), 500);
+  }
+}
+
+.section {
+  flex: 1;
+  background: map.get(map.get($color-palette, neutral), 100);
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.exportSection {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0;
+}
+
+.sectionDescription {
+  color: map.get(map.get($color-palette, neutral), 500);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.exportButton {
+  align-self: flex-start;
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 4);
+  background: map.get(map.get($color-palette, primary), 500);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+    transform: translateY(-1px);
+  }
+}

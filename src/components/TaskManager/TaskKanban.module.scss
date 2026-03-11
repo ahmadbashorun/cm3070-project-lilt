@@ -1,0 +1,138 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  height: 100%;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: map.get($spacing-scale, 5);
+  padding: map.get($spacing-scale, 4) map.get($spacing-scale, 4);
+}
+
+.viewOptions {
+  display: flex;
+  gap: map.get($spacing-scale, 2);
+}
+
+.viewButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 300);
+
+  @include transition(color, border-color);
+
+  &:hover {
+    color: map.get(map.get($color-palette, neutral), 700);
+    background: map.get(map.get($color-palette, neutral), 100);
+  }
+
+  &.active {
+    color: map.get(map.get($color-palette, stress), s0);
+    background: map.get(map.get($color-palette, neutral), 00);
+  }
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 1);
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 4);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 700);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+}
+
+.filterIcon {
+  font-size: 18px;
+}
+
+.kanban {
+  display: flex;
+  gap: map.get($spacing-scale, 4);
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: map.get($spacing-scale, 4);
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 4);
+}
+
+.column {
+  min-width: 280px;
+  max-width: 280px;
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-radius: 8px;
+  padding: map.get($spacing-scale, 3);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: calc(100vh - 200px);
+  @include transition(background, border-color);
+
+  &.dragOver {
+    background: map.get(map.get($color-palette, primary), 50);
+    border: 2px dashed map.get(map.get($color-palette, primary), 400);
+  }
+}
+
+.columnHeader {
+  margin-bottom: map.get($spacing-scale, 8);
+}
+
+.columnTitle {
+  font-size: map.get(map.get($typography, heading), h6, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.columnContent {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 2);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.emptyColumn {
+  padding: map.get($spacing-scale, 6);
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 400);
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+}
+
+.level1 {
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 24);
+}
+
+.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.dragOverlay {
+  opacity: 0.9;
+  transform: rotate(2deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,98 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 5);
+  padding: map.get($spacing-scale, 6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 2);
+}
+
+.label {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input,
+.textarea,
+.select {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-family: inherit;
+  @include transition(border-color);
+  @include focus-ring;
+
+  &:focus {
+    border-color: map.get(map.get($color-palette, primary), 500);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: map.get($spacing-scale, 5);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: map.get($spacing-scale, 3);
+  margin-top: map.get($spacing-scale, 2);
+  padding-top: map.get($spacing-scale, 5);
+  border-top: 1px solid map.get(map.get($color-palette, neutral), 200);
+}
+
+.cancelButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 5);
+  background: map.get(map.get($color-palette, neutral), 50);
+  color: map.get(map.get($color-palette, neutral), 700);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+}
+
+.saveButton {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 5);
+  background: map.get(map.get($color-palette, primary), 500);
+  color: map.get(map.get($color-palette, neutral), 50);
+  border: none;
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  cursor: pointer;
+  @include transition(background);
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 600);
+  }
+}

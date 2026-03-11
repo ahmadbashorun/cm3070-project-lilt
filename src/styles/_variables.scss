@@ -1,0 +1,228 @@
+$color-palette: (
+  primary: (
+    50: #eff6ff,
+    100: #dbeafe,
+    200: #bfdbfe,
+    300: #93c5fd,
+    400: #60a5fa,
+    500: #006dbb,
+    600: #007cd5,
+    700: #1d4ed8,
+    800: #1e40af,
+    900: #1e3a8a,
+  ),
+  neutral: (
+    50: #ffffff,
+    100: #f3f4f6,
+    200: #e5e7eb,
+    300: #d1d5db,
+    400: #9ca3af,
+    500: #6b7280,
+    600: #4b5563,
+    700: #020618,
+    800: #3e434b,
+    900: #111827,
+    950: #070914,
+  ),
+  stress: (
+    s0: #007cd5,
+    s1: #f59e0b,
+    s2: #f97316,
+    s3: #ef4444,
+    s4: #dc2626,
+  ),
+  recovery: #10b981,
+);
+
+$spacing-scale: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.25rem,
+  6: 1.5rem,
+  8: 2rem,
+  10: 2.5rem,
+  12: 3rem,
+  16: 4rem,
+  20: 5rem,
+  24: 6rem,
+);
+
+$typography: (
+  font-family: (
+    sans:
+      var(
+        --font-inter,
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif
+      ),
+    mono: (
+      "SF Mono",
+      Monaco,
+      "Cascadia Code",
+      "Roboto Mono",
+      Consolas,
+      "Courier New",
+      monospace,
+    ),
+  ),
+  font-weight: (
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+  ),
+  display: (
+    large-bold: (
+      size: 56px,
+      line-height: 120%,
+      letter-spacing: -3%,
+      weight: 600,
+    ),
+    large-regular: (
+      size: 56px,
+      line-height: 120%,
+      letter-spacing: -1%,
+      weight: 400,
+    ),
+    small-bold: (
+      size: 48px,
+      line-height: 120%,
+      letter-spacing: -3%,
+      weight: 600,
+    ),
+    small-regular: (
+      size: 48px,
+      line-height: 120%,
+      letter-spacing: -1%,
+      weight: 400,
+    ),
+  ),
+  heading: (
+    h1: (
+      size: 40px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+    h2: (
+      size: 32px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+    h3: (
+      size: 24px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+    h4: (
+      size: 20px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+    h5: (
+      size: 17px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+    h6: (
+      size: 14px,
+      line-height: 110%,
+      letter-spacing: -4%,
+      weight: 600,
+    ),
+  ),
+  paragraph: (
+    large-regular: (
+      size: 17px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 300,
+    ),
+    large-emphasized: (
+      size: 17px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 400,
+    ),
+    medium-regular: (
+      size: 14px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 300,
+    ),
+    medium-emphasized: (
+      size: 14px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 400,
+    ),
+    xsmall-regular: (
+      size: 12px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 300,
+    ),
+    xsmall-emphasized: (
+      size: 12px,
+      line-height: 130%,
+      letter-spacing: -4%,
+      weight: 400,
+    ),
+  ),
+  caption: (
+    large: (
+      size: 14px,
+      line-height: 130%,
+      letter-spacing: 0%,
+      weight: 400,
+    ),
+    medium: (
+      size: 12px,
+      line-height: 130%,
+      letter-spacing: 0%,
+      weight: 400,
+    ),
+    small: (
+      size: 10px,
+      line-height: 130%,
+      letter-spacing: 0%,
+      weight: 400,
+    ),
+  ),
+  icon: (
+    size: 16px,
+  ),
+);
+
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
+
+$z-index: (
+  base: 0,
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  modal-backdrop: 1040,
+  modal: 1050,
+  popover: 1060,
+  tooltip: 1070,
+);

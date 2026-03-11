@@ -1,0 +1,74 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.panel {
+  padding: map.get($spacing-scale, 6);
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 3);
+}
+
+.content {
+  // flex: 1;
+  width: 100%;
+}
+
+.guidanceText {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  line-height: 1.6;
+  color: map.get(map.get($color-palette, neutral), 500);
+  margin: 0;
+  font-weight: map.get(map.get($typography, font-weight), bold);
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: map.get(map.get($color-palette, primary), 500);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  @include transition(color);
+
+  &:hover {
+    color: map.get(map.get($color-palette, primary), 700);
+  }
+}
+
+.navigation {
+  display: flex;
+  gap: map.get($spacing-scale, 2);
+  margin-top: map.get($spacing-scale, 6);
+}
+
+.navButton {
+  flex: 1;
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 4);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 6px;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 700);
+  cursor: pointer;
+  @include transition(background, border-color);
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    border-color: map.get(map.get($color-palette, neutral), 300);
+  }
+
+  &:first-child {
+    background: map.get(map.get($color-palette, neutral), 700);
+    color: map.get(map.get($color-palette, neutral), 50);
+    border-color: map.get(map.get($color-palette, neutral), 700);
+
+    &:hover {
+      background: map.get(map.get($color-palette, neutral), 800);
+      border-color: map.get(map.get($color-palette, neutral), 800);
+    }
+  }
+}

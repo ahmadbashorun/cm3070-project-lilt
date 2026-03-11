@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.searchInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+  padding: map.get($spacing-scale, 4);
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: map.get(map.get($color-palette, neutral), 400);
+  margin-right: map.get($spacing-scale, 3);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: map.get(map.get($typography, font-weight), regular);
+  color: map.get(map.get($color-palette, neutral), 700);
+  padding: 0;
+
+  &::placeholder {
+    color: map.get(map.get($color-palette, neutral), 400);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.escIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: map.get($spacing-scale, 3);
+
+  span {
+    display: inline-block;
+    padding: map.get($spacing-scale, 1) map.get($spacing-scale, 2);
+    background: map.get(map.get($color-palette, neutral), 100);
+    border: 1px solid map.get(map.get($color-palette, neutral), 200);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: map.get(map.get($typography, font-weight), medium);
+    color: map.get(map.get($color-palette, neutral), 500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}

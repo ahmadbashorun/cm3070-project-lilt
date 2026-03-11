@@ -1,0 +1,88 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+  padding: 0.75rem 1rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.messageContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: map.get(map.get($color-palette, neutral), 900);
+  line-height: 1.4;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: map.get(map.get($color-palette, neutral), 600);
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.enableButton {
+  padding: 0.5rem 1rem;
+  background: map.get(map.get($color-palette, primary), 600);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, primary), 700);
+  }
+
+  &:active {
+    background: map.get(map.get($color-palette, primary), 800);
+  }
+}
+
+.dismissButton {
+  background: none;
+  border: none;
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    color: map.get(map.get($color-palette, neutral), 900);
+  }
+}
+

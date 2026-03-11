@@ -1,0 +1,79 @@
+@use "sass:map";
+@use "variables" as *;
+@use "mixins" as *;
+@use "animations";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: map.get(map.get($typography, font-family), sans);
+  color: map.get(map.get($color-palette, neutral), 900);
+  background-color: map.get(map.get($color-palette, neutral), 50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid map.get(map.get($color-palette, primary), 500);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: map.get(map.get($color-palette, neutral), 100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: map.get(map.get($color-palette, neutral), 300);
+  border-radius: 4px;
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 400);
+  }
+}
+
+// Screen reader only class for accessibility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

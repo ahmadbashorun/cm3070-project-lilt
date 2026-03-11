@@ -1,0 +1,120 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.card {
+  background: map.get(map.get($color-palette, neutral), 200);
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  border-radius: 8px;
+  padding: map.get($spacing-scale, 3);
+  cursor: grab;
+  @include transition(background, border-color, box-shadow);
+  margin-bottom: map.get($spacing-scale, 2);
+
+  &:hover {
+    border-color: map.get(map.get($color-palette, neutral), 300);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  @include focus-ring;
+}
+
+.simplified {
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  border-radius: 6px;
+}
+
+.title {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin: 0 0 map.get($spacing-scale, 2) 0;
+  line-height: 1.4;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid map.get(map.get($color-palette, primary), 100);
+  background: map.get(map.get($color-palette, primary), 50);
+  border-radius: map.get($spacing-scale, 2);
+  padding: map.get($spacing-scale, 1);
+  width: max-content;
+  gap: map.get($spacing-scale, 2);
+  margin-bottom: map.get($spacing-scale, 3);
+}
+
+.projectContainer {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 1);
+}
+
+.projectIcon {
+  font-size: 16px;
+  color: map.get(map.get($color-palette, primary), 900);
+  flex-shrink: 0;
+}
+
+.projectName {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  color: map.get(map.get($color-palette, neutral), 500);
+}
+
+.priorityContainer {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 2);
+  margin-top: map.get($spacing-scale, 3);
+}
+
+.priority {
+  font-size: map.get(map.get($typography, caption), small, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  padding: 2px map.get($spacing-scale, 1);
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  &.p0 {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  &.p1 {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  &.p2 {
+    background: map.get(map.get($color-palette, primary), 100);
+    color: map.get(map.get($color-palette, primary), 800);
+  }
+
+  &.p3 {
+    background: map.get(map.get($color-palette, neutral), 100);
+    color: map.get(map.get($color-palette, neutral), 600);
+  }
+}
+
+.dueToday {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 1);
+  font-size: map.get(map.get($typography, caption), medium, size);
+  color: map.get(map.get($color-palette, stress), s3);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+}
+
+.redDot {
+  width: 6px;
+  height: 6px;
+  background: map.get(map.get($color-palette, stress), s3);
+  border-radius: 50%;
+  flex-shrink: 0;
+}

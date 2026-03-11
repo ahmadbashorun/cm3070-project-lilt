@@ -1,0 +1,59 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.container {
+  min-height: 100vh;
+  background: #fff;
+  transition: background 0.2s ease-out;
+}
+
+.contentWrapper {
+  display: flex;
+  height: calc(100vh - 64px);
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 0rem;
+  transition: padding 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.level0 {
+  background: #fff;
+}
+
+.level1 {
+  .contentWrapper {
+    :global(aside) {
+      opacity: 0.7;
+      transition: opacity 0.2s ease-out;
+    }
+  }
+
+  .main {
+    padding: 0rem;
+  }
+}
+
+.level2,
+.level3 {
+  .contentWrapper {
+    :global(aside) {
+      display: none;
+    }
+  }
+
+  .main {
+    padding: 0rem;
+  }
+}
+
+.level4 {
+  .contentWrapper {
+    :global(aside) {
+      display: none;
+    }
+  }
+}

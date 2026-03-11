@@ -1,0 +1,77 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 4);
+  padding: map.get($spacing-scale, 4) map.get($spacing-scale, 4);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 100);
+    transform: translateX(2px);
+  }
+
+  &.read {
+    opacity: 0.7;
+  }
+}
+
+.fromContainer {
+  display: flex;
+  align-items: center;
+  gap: map.get($spacing-scale, 2);
+  width: 200px;
+  flex-shrink: 0;
+  margin-right: map.get($spacing-scale, 16);
+}
+
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  background: map.get(map.get($color-palette, stress), s0);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.from {
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subject {
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 900);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  width: auto;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.snippet {
+  color: map.get(map.get($color-palette, neutral), 500);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.timestamp {
+  color: map.get(map.get($color-palette, neutral), 500);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}

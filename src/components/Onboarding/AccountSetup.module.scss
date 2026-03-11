@@ -1,0 +1,113 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.form {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 42rem;
+}
+
+.title {
+  text-align: center;
+  font-size: map.get(map.get($typography, heading), h4, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  margin-bottom: map.get($spacing-scale, 24);
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarSection {
+  margin-bottom: map.get($spacing-scale, 8);
+}
+
+.avatarButton {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  @include focus-ring();
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.avatarGradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  border-radius: 9999px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.nameSection {
+  width: 100%;
+  margin-bottom: map.get($spacing-scale, 4);
+}
+
+.nameLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  color: map.get(map.get($color-palette, neutral), 700);
+  margin-bottom: map.get($spacing-scale, 2);
+}
+
+.nameInput {
+  width: 100%;
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 4);
+  border: 1px solid map.get(map.get($color-palette, neutral), 300);
+  border-radius: 0.5rem;
+  @include focus-ring();
+
+  &:focus {
+    border-color: map.get(map.get($color-palette, primary), 500);
+    outline: none;
+  }
+}
+
+.submitButton {
+  width: 100%;
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 4);
+  border-radius: 0.7rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  font-size: 1rem;
+  @include transition(background-color, color);
+
+  &.enabled {
+    background-color: map.get(map.get($color-palette, primary), 600);
+    color: white;
+    @include focus-ring();
+
+    &:hover {
+      background-color: map.get(map.get($color-palette, primary), 700);
+    }
+  }
+
+  &.disabled {
+    background-color: map.get(map.get($color-palette, neutral), 300);
+    color: map.get(map.get($color-palette, neutral), 500);
+    cursor: not-allowed;
+  }
+}

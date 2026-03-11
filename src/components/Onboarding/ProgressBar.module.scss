@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  width: 100%;
+  margin-bottom: map.get($spacing-scale, 8);
+  max-width: 42rem;
+}
+
+.barContainer {
+  width: 100%;
+  height: 7px;
+  border-radius: 9px;
+  background-color: map.get(map.get($color-palette, neutral), 200);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: map.get(map.get($color-palette, neutral), 900);
+}

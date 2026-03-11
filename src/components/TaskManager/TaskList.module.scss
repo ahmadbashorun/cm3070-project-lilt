@@ -1,0 +1,95 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: map.get($spacing-scale, 6);
+  background: #ffffff;
+}
+
+.noticeBanner {
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  margin: 0 0 map.get($spacing-scale, 5) 0;
+}
+
+.tabs {
+  display: flex;
+  gap: map.get($spacing-scale, 2);
+  margin-bottom: map.get($spacing-scale, 6);
+}
+
+.tab {
+  padding: map.get($spacing-scale, 3) map.get($spacing-scale, 5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  color: map.get(map.get($color-palette, neutral), 400);
+  border-bottom: 2px solid transparent;
+  @include transition(color, border-color);
+
+  &:hover {
+    color: map.get(map.get($color-palette, neutral), 700);
+  }
+
+  &.active {
+    color: map.get(map.get($color-palette, neutral), 900);
+    font-weight: map.get(map.get($typography, font-weight), semibold);
+  }
+}
+
+.taskList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: map.get($spacing-scale, 8);
+  @include transition(background, border-color);
+
+  &.dragOver {
+    background: map.get(map.get($color-palette, primary), 50);
+    border: 2px dashed map.get(map.get($color-palette, primary), 400);
+    border-radius: 8px;
+    padding: map.get($spacing-scale, 2);
+  }
+}
+
+.sectionTitle {
+  font-size: map.get(map.get($typography, caption), medium, size);
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 map.get($spacing-scale, 3) 0;
+}
+
+.taskGroup {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 2);
+}
+
+.emptyState {
+  padding: map.get($spacing-scale, 12);
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 400);
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+}
+
+.encouragement {
+  text-align: center;
+  color: map.get(map.get($color-palette, neutral), 400);
+  font-style: italic;
+  font-size: map.get(map.get($typography, paragraph), medium-regular, size);
+  margin: map.get($spacing-scale, 8) 0 0 0;
+}
+
+.dragOverlay {
+  opacity: 0.9;
+  transform: rotate(2deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

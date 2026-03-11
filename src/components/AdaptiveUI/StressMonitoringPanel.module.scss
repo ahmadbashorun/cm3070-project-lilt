@@ -1,0 +1,160 @@
+@use "sass:map";
+@use "../../styles/variables" as *;
+
+.panel {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 450px;
+  max-height: 500px;
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 997;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid map.get(map.get($color-palette, neutral), 200);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: map.get($spacing-scale, 2) map.get($spacing-scale, 3);
+  border-bottom: 1px solid map.get(map.get($color-palette, neutral), 200);
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: map.get(map.get($color-palette, neutral), 500);
+  cursor: pointer;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: map.get(map.get($color-palette, neutral), 200);
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: map.get($spacing-scale, 2);
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing-scale, 2);
+}
+
+.chartWrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.375rem;
+  padding: map.get($spacing-scale, 2);
+}
+
+.currentMetrics {
+  background: map.get(map.get($color-palette, neutral), 100);
+  border-radius: 0.375rem;
+  padding: map.get($spacing-scale, 2);
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: map.get($spacing-scale, 2);
+  margin-bottom: map.get($spacing-scale, 2);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: map.get($spacing-scale, 1) map.get($spacing-scale, 2);
+  background: map.get(map.get($color-palette, neutral), 50);
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.metricLabel {
+  font-size: 0.625rem;
+  color: map.get(map.get($color-palette, neutral), 600);
+  font-weight: map.get(map.get($typography, font-weight), medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metricValue {
+  font-size: 1rem;
+  font-weight: map.get(map.get($typography, font-weight), semibold);
+  color: map.get(map.get($color-palette, neutral), 900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.warningBadge {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #f59e0b;
+}
+
+.level1 {
+  border-left: 3px solid #f59e0b;
+}
+
+.level2 {
+  border-left: 3px solid #f97316;
+}
+
+.level3 {
+  border-left: 3px solid #ef4444;
+}
+
+.level4 {
+  border-left: 3px solid #dc2626;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .panel {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 1rem;
+    max-height: 400px;
+  }
+}
